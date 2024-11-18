@@ -73,9 +73,9 @@ struct ContentView:View {
             .frame(width: 120, height: 120)
 
 
-            Spacer()
+//            Spacer()
 
-            HStack(spacing:20){
+            VStack(spacing:20){
                 Button {
                     withAnimation(.easeOut(duration:0)){
                         islock1.toggle()
@@ -83,7 +83,7 @@ struct ContentView:View {
 //                        isreverse1.toggle()
                     }
                 } label: {
-                    Text("視差効果なし")
+                        Text("視差効果なし")
                 }
 
                 Button {
