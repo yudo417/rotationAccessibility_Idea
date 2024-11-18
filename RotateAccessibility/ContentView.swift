@@ -101,7 +101,7 @@ struct ContentView:View {
 
                 Button {
                     isKeyExsist.toggle()
-                    withAnimation(.easeIn(duration:0.5)){
+                    withAnimation(.linear(duration:0.5)){
                         isKeyrotate.toggle()
 
                     }
