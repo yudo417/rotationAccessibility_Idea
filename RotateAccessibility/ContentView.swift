@@ -45,8 +45,9 @@ struct ContentView:View {
                     }
                     .foregroundStyle(.blue)
                     .frame(width: 70, height: 70)
-                    .scaleEffect(x:isreverse2 ? 1 : -1)
-                    .rotation3DEffect(.degrees(isrotate2 ? 0 : 360*0+180),axis:(x:0,y:1,z:0))
+//                    .scaleEffect(x:isreverse2 ? 1 : -1)
+//                    .rotation3DEffect(.degrees(isrotate2 ? 0 : 360*0+180),axis:(x:0,y:1,z:0))
+                    .rotation3DEffect(.degrees(isrotate2 ? 0 : 360),axis:(x:0,y:0,z:1))
             }
             .frame(width: 120, height: 120)
 
@@ -66,6 +67,8 @@ struct ContentView:View {
                     .frame(width: 70, height: 70)
                     .scaleEffect(x:isreverse3 ? 1 : -1)
                     .rotation3DEffect(.degrees(isrotate3 ? 0 : 360*20+180),axis:(x:0,y:1,z:0))
+                    .rotation3DEffect(.degrees(isrotate3 ? 0 : 360*20),axis:(x:0,y:0,z:1))
+                    .rotation3DEffect(.degrees(isrotate3 ? 0 : 360*1),axis:(x:1,y:0,z:0))
             }
             .frame(width: 120, height: 120)
 
@@ -74,7 +77,7 @@ struct ContentView:View {
 
             HStack(spacing:20){
                 Button {
-                    withAnimation(.easeOut(duration:0.5)){
+                    withAnimation(.easeOut(duration:0)){
                         islock1.toggle()
 //                        isrotate1.toggle()
 //                        isreverse1.toggle()
