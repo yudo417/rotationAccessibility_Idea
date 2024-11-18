@@ -10,6 +10,8 @@ struct ContentView:View {
     @State var islock3: Bool = false
     @State var isrotate3: Bool = false
     @State var isreverse3: Bool = false
+    @State var isKeyExsist: Bool = false
+    @State var isKeyrotate: Bool = false
     var body: some View {
         VStack(spacing:60){
             Group{
@@ -50,6 +52,17 @@ struct ContentView:View {
                     .rotation3DEffect(.degrees(isrotate2 ? 0 : 360),axis:(x:0,y:0,z:1))
             }
             .frame(width: 120, height: 120)
+            .overlay {
+                if isKeyExsist{
+                    Image(systemName: "key.horizontal")
+                        .resizable()
+                        .foregroundStyle(.blue)
+                        .frame(width: 60, height: 50)
+                        .offset(x:isKeyrotate ? -80 : 80)
+                        .scaleEffect(y:isKeyrotate ? 1 : -1)
+                        .rotation3DEffect(.degrees(isKeyrotate ? 0 : 720), axis: (x:1,y:0,z:0))
+                }
+            }
 
             Group{
                 Image(systemName: !islock3 ? "lock" :"lock.open")
@@ -87,10 +100,18 @@ struct ContentView:View {
                 }
 
                 Button {
+                    isKeyExsist.toggle()
+                    withAnimation(.easeIn(duration:0.5)){
+                        isKeyrotate.toggle()
+
+                    }
                     withAnimation(.easeOut(duration:0.5)){
                         islock2.toggle()
                         isrotate2.toggle()
                         isreverse2.toggle()
+                        defer{
+//                            isKeyExsist.toggle()
+                        }
                     }
                 } label: {
                     Text("視差効果あり")
